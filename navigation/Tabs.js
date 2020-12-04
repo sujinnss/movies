@@ -1,11 +1,11 @@
-import React, { useEffect, useLayoutEffect } from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Movies from "../screens/Movies";
+import React, {useLayoutEffect} from "react";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import Movies from "../screens/Movies/MoviesContainer";
 import Tv from "../screens/Tv";
 import Search from "../screens/Search";
 import Favs from "../screens/Favs";
-import { Ionicons } from "@expo/vector-icons";
-import { Platform } from "react-native-web";
+import {Ionicons} from "@expo/vector-icons";
+import {Platform} from "react-native-web";
 
 // 자식 내비게이션
 
@@ -31,7 +31,7 @@ export default ({ navigation, route }) => {
             iconsName += "tv";
           } else if (route.name === "Search") {
             iconsName += "search";
-          } else if (route.name === "Favorite") {
+          } else if (route.name === "Discovery") {
             iconsName += "heart";
           }
           return (
@@ -54,7 +54,7 @@ export default ({ navigation, route }) => {
       <Tabs.Screen name="Movies" component={Movies} />
       <Tabs.Screen name="TV" component={Tv} />
       <Tabs.Screen name="Search" component={Search} />
-      <Tabs.Screen name="Favorite" component={Favs} />
+      <Tabs.Screen name="Discovery" component={Favs} />
     </Tabs.Navigator>
   );
 };
