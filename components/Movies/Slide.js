@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components/native";
 import PropTypes from "prop-types";
-import {apiImage} from "../../api";
+import { apiImage } from "../../api";
 import Poster from "../Poster";
-import {TouchableOpacity} from "react-native";
-// const { width: WIDTH, height: HEIGHT } = Dimensions.get("screen");
+import { TouchableOpacity } from "react-native";
+import Votes from "../Votes";
+import { trimText } from "../../utils.js";
 
+// const { width: WIDTH, height: HEIGHT } = Dimensions.get("screen");
 const Container = styled.View`
   height: 100%;
   width: 100%;
@@ -34,11 +36,11 @@ const Title = styled.Text`
   font-size: 18px;
   margin-bottom: 7px;
 `;
-const Votes = styled.Text`
+const VotesContainer = styled.View`
   color: rgb(230, 230, 230);
   margin-bottom: 5px;
   font-size: 12px;
-  font-weight:500 ;
+  font-weight: 500;
 `;
 const OverView = styled.Text`
   color: rgb(230, 230, 230);
@@ -61,11 +63,13 @@ const Slide = ({ id, title, backgroundImage, votes, overview, poster }) => (
   <Container>
     <BG source={{ uri: apiImage(backgroundImage) }} />
     <Content>
-      <Poster url={apiImage(poster)} />
+      <Poster url={poster} />
       <Data>
-        <Title>{title.length > 40 ? `${title.slice(0, 40)}...` : title}</Title>
-        <Votes>★ {votes} / 10</Votes>
-        <OverView>{`${overview.slice(0, 100)}...`}</OverView>
+        <Title>{trimText(title, 40)}</Title>
+        <VotesContainer>
+          <Votes votes={votes} />
+        </VotesContainer>
+        <OverView>{trimText(overview,110)}</OverView>
         <TouchableOpacity>
           <Button>
             <ButtonText>View Detail</ButtonText>
@@ -82,6 +86,7 @@ Slide.propTypes = {
   backgroundImage: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
   overview: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
 };
 
 export default Slide;

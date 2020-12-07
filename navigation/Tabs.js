@@ -1,11 +1,11 @@
-import React, {useLayoutEffect} from "react";
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import React, { useLayoutEffect } from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Movies from "../screens/Movies/MoviesContainer";
 import Tv from "../screens/Tv";
 import Search from "../screens/Search";
 import Favs from "../screens/Favs";
-import {Ionicons} from "@expo/vector-icons";
-import {Platform} from "react-native-web";
+import { Ionicons } from "@expo/vector-icons";
+import { Platform } from "react-native-web";
 
 // 자식 내비게이션
 
