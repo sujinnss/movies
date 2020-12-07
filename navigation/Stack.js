@@ -20,7 +20,7 @@ export default () => (
       headerBackTitleVisible: false,
     }}
   >
-    <Stack.Screen name="Tabs!" component={Tabs} />
+    <Stack.Screen name="Tabs" component={Tabs} />
     <Stack.Screen name="Detail" component={Detail} />
   </Stack.Navigator>
 );
