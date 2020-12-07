@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components/native";
 import Swiper from "react-native-web-swiper";
-import {ActivityIndicator, Dimensions} from "react-native";
+import { ActivityIndicator, Dimensions } from "react-native";
 import Slide from "../../components/Movies/Slide";
-import Title from "../../components/Movies/Title";
+import Title from "../../components/Title";
+import { ScrollView } from "react-native";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
@@ -16,10 +17,22 @@ const Container = styled.View`
 const SliderContainer = styled.View`
   width: ${WIDTH}px;
   height: ${HEIGHT / 4}px;
+  margin-bottom: 50px;
+
 `;
 
+// const Container = style.View`
+// padding
+// `;
+
 export default ({ loading, nowPlaying }) => (
-  <Container>
+  <ScrollView
+    style={{ backgroundColor: "black" }}
+    contentContainerStyle={{
+      flex:1,
+      justifyContent: loading ? "center" : "flex-start",
+    }}
+  >
     {loading ? (
       <ActivityIndicator color="white" size="small" />
     ) : (
@@ -42,8 +55,9 @@ export default ({ loading, nowPlaying }) => (
             })}
           </Swiper>
         </SliderContainer>
+          {/*<Container></Container>*/}
         <Title title={"Popular Movies"} />
       </>
     )}
-  </Container>
+  </ScrollView>
 );
