@@ -15,14 +15,8 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 
 const Container = styled.View``;
 
-// const SliderContainer = styled.View`
-//   width: 100%;
-//   height: ${HEIGHT / 4}px;
-//   margin-bottom: 50px;
-// `;
-
-export default ({ loading, nowPlaying, popular, upcoming }) => (
-  <ScrollContainer loading={loading}>
+export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
+  <ScrollContainer refreshFn={refreshFn} loading={loading}>
     <>
       <Slider>
         {nowPlaying.map((movie) => {

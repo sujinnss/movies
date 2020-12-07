@@ -35,5 +35,5 @@ export default () => {
   useEffect(() => {
     getData();
   }, []);
-  return <TvPresenter {...show} />;
+  return <TvPresenter refreshFn={getData} {...show} />;
 };
