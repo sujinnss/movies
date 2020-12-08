@@ -27,6 +27,8 @@ export default ({ loading, popular, topRated,today,thisWeek,refreshFn }) => (
                         overview={show.overview}
                         backgroundImage={show.backdrop_path}
                         poster={show.poster_path}
+                        votes={show.vote_average}
+                        releaseDate={show.first_air_date}
                     />
                 );
             })}
@@ -41,6 +43,8 @@ export default ({ loading, popular, topRated,today,thisWeek,refreshFn }) => (
               votes={show.vote_average}
               poster={show.poster_path}
               title={show.name}
+              overview={show.overview}
+              releaseDate={show.first_air_date}
             />
           );
         })}
@@ -55,6 +59,8 @@ export default ({ loading, popular, topRated,today,thisWeek,refreshFn }) => (
               votes={show.vote_average}
               poster={show.poster_path}
               title={show.name}
+              overview={show.overview}
+              releaseDate={show.first_air_date}
             />
           );
         })}
@@ -69,6 +75,8 @@ export default ({ loading, popular, topRated,today,thisWeek,refreshFn }) => (
                       overview={show.overview}
                       poster={show.poster_path}
                       title={show.name}
+                      releaseDate={show.first_air_date}
+                      votes={show.vote_average}
                   />
               );
           })}

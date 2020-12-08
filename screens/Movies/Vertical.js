@@ -19,12 +19,16 @@ const Title = styled.Text`
   margin: 10px 0 5px 0;
 `;
 
-const Vertical = ({ id, poster, title, votes }) => {
+const Vertical = ({ id, poster, title, votes ,overview,releaseDate}) => {
   const navigation = useNavigation();
   const goDetail = () => {
-    navigation.navigate("Detail",{
+    navigation.navigate("Detail", {
       id,
-      title
+      title,
+      votes,
+      poster,
+      overview,
+      releaseDate
     });
   };
   return (

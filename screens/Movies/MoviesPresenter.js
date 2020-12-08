@@ -30,6 +30,7 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
               votes={movie.vote_average}
               backgroundImage={movie.backdrop_path}
               poster={movie.poster_path}
+              releaseDate={movie.release_date}
             />
           );
         })}
@@ -45,6 +46,9 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
                 votes={movie.vote_average}
                 poster={movie.poster_path}
                 title={movie.title}
+                backgroundImage={movie.backdrop_path}
+                overview={movie.overview}
+                releaseDate={movie.release_date}
               />
             );
           })}
@@ -60,6 +64,7 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
                 overview={movie.overview}
                 title={movie.title}
                 poster={movie.poster_path}
+                votes={movie.vote_average}
               />
             );
           })}

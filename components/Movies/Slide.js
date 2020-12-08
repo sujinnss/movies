@@ -6,6 +6,7 @@ import Poster from "../Poster";
 import { TouchableOpacity } from "react-native";
 import Votes from "../Votes";
 import { trimText } from "../../utils.js";
+import { useNavigation } from "@react-navigation/native";
 
 // const { width: WIDTH, height: HEIGHT } = Dimensions.get("screen");
 const Container = styled.View`
@@ -59,27 +60,47 @@ const ButtonText = styled.Text`
   color: white;
 `;
 
-const Slide = ({ id, title, backgroundImage, votes, overview, poster }) => (
-  <Container>
-    <BG source={{ uri: apiImage(backgroundImage) }} />
-    <Content>
-      <Poster url={poster} />
-      <Data>
-        <Title>{trimText(title, 40)}</Title>
-        <VotesContainer>
-          <Votes votes={votes} />
-        </VotesContainer>
-        <OverView>{trimText(overview,110)}</OverView>
-        <TouchableOpacity>
-          <Button>
-            <ButtonText>View Detail</ButtonText>
-          </Button>
-        </TouchableOpacity>
-      </Data>
-    </Content>
-  </Container>
-);
-
+const Slide = ({
+  id,
+  title,
+  backgroundImage,
+  votes,
+  overview,
+  poster,
+  releaseDate,
+}) => {
+  const navigation = useNavigation();
+  const goToDetail = () =>
+    navigation.navigate("Detail", {
+      id,
+      title,
+      backgroundImage,
+      votes,
+      overview,
+      poster,
+      releaseDate,
+    });
+  return (
+    <Container>
+      <BG source={{ uri: apiImage(backgroundImage) }} />
+      <Content>
+        <Poster url={poster} />
+        <Data>
+          <Title>{trimText(title, 40)}</Title>
+          <VotesContainer>
+            <Votes votes={votes} />
+          </VotesContainer>
+          <OverView>{trimText(overview, 110)}</OverView>
+          <TouchableOpacity onPress={goToDetail}>
+            <Button>
+              <ButtonText>View Detail</ButtonText>
+            </Button>
+          </TouchableOpacity>
+        </Data>
+      </Content>
+    </Container>
+  );
+};
 Slide.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
