@@ -10,6 +10,8 @@ import { Platform } from "react-native-web";
 // 자식 내비게이션
 
 const Tabs = createBottomTabNavigator();
+
+//  선택한 탭의 header 이름 변경하는 부분
 const getHeaderName = (route) =>
   route?.state?.routeNames[route.state.index] || "Movies";
 

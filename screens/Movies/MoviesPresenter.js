@@ -65,6 +65,7 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
                 title={movie.title}
                 poster={movie.poster_path}
                 votes={movie.vote_average}
+                backgroundImage={movie.backdrop_path}
               />
             );
           })}

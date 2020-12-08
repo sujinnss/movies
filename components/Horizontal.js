@@ -33,16 +33,18 @@ const Overview = styled.Text`
   color: white;
 `;
 
-const Horizontal = ({ id, title, overview, poster, releaseDate,votes }) => {
+const Horizontal = ({ isTv=false, id, title, overview, poster, releaseDate,votes ,backgroundImage}) => {
   const navigation = useNavigation();
   const goDetail = () => {
     navigation.navigate("Detail", {
+      isTv,
       id,
       title,
       poster,
       overview,
       releaseDate,
-      votes
+      votes,
+      backgroundImage
     });
   };
   return (
