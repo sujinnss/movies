@@ -36,6 +36,7 @@ export default ({ navigation, route }) => {
           } else if (route.name === "Discovery") {
             iconsName += "heart";
           }
+          console.log(route)
           return (
             <Ionicons
               name={iconsName}

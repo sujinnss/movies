@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components/native";
 import ScrollContainer from "../../components/ScrollContainer";
-import { Dimensions } from "react-native";
+import { ActivityIndicator, Dimensions } from "react-native";
 import { apiImage } from "../../api";
 import Poster from "../../components/Poster";
 import Votes from "../../components/Votes";
-import { formatData } from "../../utils"
+import { formatData } from "../../utils";
 
 const Header = styled.View`
   height: ${Dimensions.get("window").height / 3}px;
@@ -45,11 +45,12 @@ const ReleaseDate = styled.Text`
 `;
 
 const Data = styled.View`
-  margin-top: 80px;
+  margin-top: 30px;
   padding: 0 30px;
 `;
 
 const DataName = styled.Text`
+  margin-top: 30px;
   color: white;
   opacity: 0.8;
   font-weight: 800;
@@ -62,25 +63,39 @@ const DataValue = styled.Text`
   font-weight: 500;
 `;
 
-export default () => {
+export default ({ result, loading }) => {
+    console.log(result)
   return (
     <ScrollContainer loading={false}>
       <Header>
-        <BG source={{ uri: apiImage(backgroundImage, "-") }} />
+        <BG source={{ uri: apiImage(result.backgroundImage, "-") }} />
         <Container>
-          <Poster url={poster} />
+          <Poster url={result.poster} />
           <Info>
-            <Title>{title}</Title>
-            {releaseDate ? (
-              <ReleaseDate>{formatData(releaseDate)}</ReleaseDate>
+            <Title>{result.title}</Title>
+            {result.releaseDate ? (
+              <ReleaseDate>{formatData(result.releaseDate)}</ReleaseDate>
             ) : null}
-            <Votes votes={votes} />
+            <Votes votes={result.votes} />
           </Info>
         </Container>
       </Header>
       <Data>
-        <DataName>OverView</DataName>
-        <DataValue>{overview ? overview : "-"}</DataValue>
+        {result.overview && (
+          <>
+            <DataName>OverView</DataName>
+            <DataValue>{result.overview ? result.overview : "-"}</DataValue>
+          </>
+        )}
+        {loading && (
+          <ActivityIndicator style={{ marginTop: 30 }} color={"white"} />
+        )}
+        {result.spoken_languages && (
+          <>
+            <DataName>Language</DataName>
+              <DataValue>{result.spoken_languages[0].name}</DataValue>
+          </>
+        )}
       </Data>
     </ScrollContainer>
   );

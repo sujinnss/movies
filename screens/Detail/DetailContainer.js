@@ -20,11 +20,11 @@ export default ({
     },
   },
 }) => {
+  console.log(isTv);
   const [loading, setLoading] = useState(true);
   const [detail, setDetail] = useState({
     loading,
     result: {
-      id,
       title,
       backgroundImage,
       poster,
@@ -56,5 +56,5 @@ export default ({
   React.useLayoutEffect(() => {
     navigation.setOptions({ title });
   });
-  return <DetailPresenter detail={...detail}  />;
+  return <DetailPresenter {...detail} />;
 };
