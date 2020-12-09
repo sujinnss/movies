@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components/native";
-import PropTypes from "prop-types";
+import React, {useEffect, useState} from "react";
+import * as WebBrowser from "expo-web-browser";
 import DetailPresenter from "./DetailPresenter";
-import { movieApi, tvApi } from "../../api";
-import Slide from "../../components/Movies/Slide";
+import {movieApi, tvApi} from "../../api";
 
 export default ({
   navigation,
@@ -31,9 +29,13 @@ export default ({
       votes,
       overview,
       releaseDate,
+      videos:{
+        results:[]
+      }
     },
   });
   const getData = async () => {
+    console.log(isTv);
     const [getDetail, getDetailError] = isTv
       ? await tvApi.show(id)
       : await movieApi.movie(id);
@@ -42,7 +44,7 @@ export default ({
       result: {
         ...getDetail,
         title: getDetail.title || getDetail.name,
-        backgroundImage: getDetail.backdrop_path,
+        backgroundImage: getDetail.backdrop_path || getDetail.poster_path,
         poster: getDetail.poster_path,
         overview: getDetail.overview,
         votes: getDetail.vote_average,
@@ -56,5 +58,9 @@ export default ({
   React.useLayoutEffect(() => {
     navigation.setOptions({ title });
   });
-  return <DetailPresenter {...detail} />;
+
+  const openBrowser = async (url) => {
+    await WebBrowser.openBrowserAsync(url);
+  };
+  return <DetailPresenter {...detail} openBrowser={openBrowser} />;
 };

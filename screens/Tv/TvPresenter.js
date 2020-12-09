@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components/native";
-import PropTypes from "prop-types";
 import ScrollContainer from "../../components/ScrollContainer";
 import HorizontalSlider from "../../components/HorizontalSlider";
 import Vertical from "../Movies/Vertical";
@@ -21,6 +20,7 @@ export default ({ loading, popular, topRated, today, thisWeek, refreshFn }) => (
           console.log(show);
           return (
             <Slide
+              isTv={true}
               key={show.id}
               id={show.id}
               title={show.name}

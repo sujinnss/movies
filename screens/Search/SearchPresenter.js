@@ -6,7 +6,11 @@ import Vertical from "../Movies/Vertical";
 import ScrollContainer from "../../components/ScrollContainer";
 
 export default ({ movies, shows, onChange, onSubmit, keyword }) => (
-  <ScrollContainer  refreshFn={onSubmit} loading={false} contentContainerStyle={{ paddingTop: 10 }}>
+  <ScrollContainer
+    refreshFn={onSubmit}
+    loading={false}
+    contentContainerStyle={{ paddingTop: 10 }}
+  >
     <Input
       placeholder={"Write a keyword"}
       value={keyword}
@@ -17,11 +21,12 @@ export default ({ movies, shows, onChange, onSubmit, keyword }) => (
       <HorizontalSlider title={"Movies results"}>
         {movies.map((movie) => (
           <Vertical
+            isTv={false}
             key={movie.id}
             votes={movie.vote_average}
             poster={movie.poster_path}
             id={movie.id}
-            title={movie.name}
+            title={movie.original_title}
           />
         ))}
       </HorizontalSlider>
@@ -30,11 +35,12 @@ export default ({ movies, shows, onChange, onSubmit, keyword }) => (
       <HorizontalSlider title={"Tv results"}>
         {shows.map((show) => (
           <Vertical
+            isTv={true}
             key={show.id}
             votes={show.vote_average}
             poster={show.poster_path}
             id={show.id}
-            title={show.name}
+            title={show.original_name}
           />
         ))}
       </HorizontalSlider>

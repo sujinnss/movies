@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
-import Swiper from "react-native-web-swiper";
-import { Dimensions, ScrollView } from "react-native";
+import {Dimensions} from "react-native";
 import Slide from "../../components/Movies/Slide";
-import Title from "../../components/Title";
 import Vertical from "./Vertical";
 import Horizontal from "../../components/Horizontal";
 import ScrollContainer from "../../components/ScrollContainer";
@@ -23,6 +21,7 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
           console.log(movie);
           return (
             <Slide
+              isTv={false}
               key={movie.id}
               id={movie.id}
               title={movie.original_title}
@@ -41,6 +40,7 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
             console.log(movie);
             return (
               <Vertical
+                isTv={false}
                 id={movie.id}
                 key={movie.id}
                 votes={movie.vote_average}
@@ -58,6 +58,7 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
             console.log(movie);
             return (
               <Horizontal
+                isTv={false}
                 id={movie.id}
                 key={movie.id}
                 releaseDate={movie.release_date}
