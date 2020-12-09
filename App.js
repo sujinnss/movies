@@ -1,14 +1,14 @@
-import React, {useState} from "react";
-import {AppLoading} from "expo";
+import React, { useState } from "react";
+import { AppLoading } from "expo";
 import * as Font from "expo-font";
-import {Image, StatusBar} from "react-native";
-import {Asset} from "expo-asset";
-import {Ionicons} from "@expo/vector-icons";
-import {NavigationContainer} from "@react-navigation/native";
+import { Image, StatusBar } from "react-native";
+import { Asset } from "expo-asset";
+import { Ionicons } from "@expo/vector-icons";
+import { NavigationContainer } from "@react-navigation/native";
 import Stack from "./navigation/Stack";
 
 const cacheImages = (images) => {
-  images.map((image) => {
+  return images.map((image) => {
     if (typeof image === "string") {
       return Image.prefetch(image);
     } else {

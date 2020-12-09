@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import {Dimensions} from "react-native";
+import { Dimensions } from "react-native";
 import Slide from "../../components/Movies/Slide";
 import Vertical from "./Vertical";
 import Horizontal from "../../components/Horizontal";
@@ -18,7 +18,6 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
     <>
       <Slider>
         {nowPlaying.map((movie) => {
-          console.log(movie);
           return (
             <Slide
               isTv={false}
@@ -37,7 +36,6 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
       <Container>
         <HorizontalSlider title={"Popular Movies"}>
           {popular.map((movie) => {
-            console.log(movie);
             return (
               <Vertical
                 isTv={false}
@@ -55,7 +53,6 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => (
         </HorizontalSlider>
         <List title={"Coming Soon"}>
           {upcoming.map((movie) => {
-            console.log(movie);
             return (
               <Horizontal
                 isTv={false}
