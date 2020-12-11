@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components/native";
-import PropTypes from "prop-types";
-import { FontAwesome } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native";
+import {FontAwesome} from "@expo/vector-icons";
+import {TouchableOpacity} from "react-native";
+
 
 const Container = styled.View`
   flex-direction: row;
@@ -20,7 +20,7 @@ const Link = ({ onPress, text, icon }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <Container>
-        <FontAwesome name={icon} color={"white"} size="22" />
+        <FontAwesome name={icon} color={"white"} size={22} />
         <Text style={{ color: "white" }}>{text}</Text>
       </Container>
     </TouchableOpacity>

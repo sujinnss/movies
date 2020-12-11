@@ -37,13 +37,7 @@ const Title = styled.Text`
   font-size: 20px;
   margin-bottom: 10px;
 `;
-// const ReleaseDate = styled.Text`
-//   margin-bottom: 7px;
-//   opacity: 0.8;
-//   color: white;
-//   font-size: 13px;
-//   font-weight: 500;
-// `;
+
 
 const Data = styled.View`
   margin-top: 30px;
